@@ -8,30 +8,24 @@
 # y solo necesitamos que se ejecuten algunas cosas
 # de esta manera, podr[iamos importar cada una de las funciones de utils por separado
 
-def run():
-    def get_population(country_dict):
-        #Dictionary with population
-        population_dict = {
-            '2022': country_dict['2022 Population'],
-            '2020': country_dict['2020 Population'],
-            '2015': country_dict['2015 Population'],
-            '2010': country_dict['2010 Population'],
-            '2000': country_dict['2000 Population'],
-            '1990': country_dict['1990 Population'],
-            '1980': country_dict['1980 Population'],
-            '1970': country_dict['1970 Population'],
-        }
-        labels = population_dict.keys()
-        values = population_dict.values()
-        return labels, values
 
-    def population_by_country(data, country): #data estara en el main
-        #Result sera una lista de diccionarios. Filter me da los datos especificos de un pais
-        result = list(filter(lambda item: item['Country'] == country, data))
-        return result
+def get_population(country_dict):
+    #Dictionary with population
+    population_dict = {
+        '2022': int(country_dict['2022 Population']),
+        '2020': int(country_dict['2020 Population']),
+        '2015': int(country_dict['2015 Population']),
+        '2010': int(country_dict['2010 Population']),
+        '2000': int(country_dict['2000 Population']),
+        '1990': int(country_dict['1990 Population']),
+        '1980': int(country_dict['1980 Population']),
+        '1970': int(country_dict['1970 Population']),
+    }
+    labels = population_dict.keys()
+    values = population_dict.values()
+    return labels, values
 
-#Este if es para tener la dualidad de lo que se dice arriba. Si quisiera ejecutar todo el archivo desde la 
-#  terminal como un script. Este if me permite poder hacerlo
-if __name__ == '__main__':
-    run() #Si se ejecuta desde la terminal, ejecutarlo el run,
-        #    pero si se corre desde otro archivo, no.
+def population_by_country(data, country):
+    #result will be a list of dictionaries. filter will give me specific data from a country
+    result = list(filter(lambda item: item['Country/Territory'] == country, data))
+    return result
