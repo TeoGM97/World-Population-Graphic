@@ -6,12 +6,12 @@ import charts
 def run():
     data = read_csv.read_csv('./data.csv')
     #Only South American Countries
-    data = list(filter(lambda item: item['Continent'] == 'South America', data))
+    data = list(filter(lambda item : item['Continent'] == 'Asia',data))
 
     #All the countries
-    countries = list(map(lambda x: x['Country/Territory'], data))
+    countries = list(map(lambda x: x['Country'], data))
     #Percentage per country
-    percentages = list(map(lambda x: ['World Population Percentage'], data))
+    percentages = list(map(lambda x: x['World Population Percentage'], data))
     charts.generate_pie_chart(countries, percentages)
 
 
